@@ -1,0 +1,17 @@
+version: '3'
+services:
+  server:
+    build:
+      context: .
+    ports:
+      - "9080:9080"
+    volumes:
+      #- ./config-log4j:/mfp/config-log4j # uncomment to map adapter log settings
+      #- ./logs:/mfp/logs # uncomment to map logs of adapters
+      - ./internal/mfp/workarea:/root/MobileFirst-8.0.0.0/mfp-server/usr/servers/mfp/workarea
+      - ./internal/mfp/analyticsData:/root/MobileFirst-8.0.0.0/mfp-server/usr/servers/mfp/analyticsData
+      - ./internal/mfp/logs:/root/MobileFirst-8.0.0.0/mfp-server/usr/servers/mfp/logs
+      - databases:/root/MobileFirst-8.0.0.0/mfp-server/databases
+
+volumes:
+  databases:
